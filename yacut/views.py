@@ -2,7 +2,7 @@ import random
 
 from flask import flash, redirect, render_template
 
-from . import app, db
+from yacut import app, db
 from yacut.models import URLMap
 from yacut.forms import URLMapForm
 from yacut import constants as const
