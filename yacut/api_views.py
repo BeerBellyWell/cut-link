@@ -1,4 +1,5 @@
 from http import HTTPStatus
+
 from flask import jsonify, request, url_for
 
 from yacut import app, db
@@ -24,7 +25,8 @@ def create_short_link() -> tuple:
         short_url = data['custom_id']
 
     if not length_symbol_validate(short_url):
-        raise InvalidAPIUsage('Указано недопустимое имя для короткой ссылки', HTTPStatus.BAD_REQUEST)
+        raise InvalidAPIUsage('Указано недопустимое имя для короткой ссылки',
+                              HTTPStatus.BAD_REQUEST)
 
     if URLMap.query.filter_by(short=short_url).first():
         raise InvalidAPIUsage(f'Имя "{short_url}" уже занято.')
